@@ -1,0 +1,47 @@
+body {
+	background-color: honeydew;
+	font-family: arial;
+}
+
+h1 {
+	text-align: center;
+}
+
+#topping_container {
+	background-color: white;
+	width: 100%;
+
+
+}
+
+#topping_container img {
+	height: 50px;
+}
+
+#topping_container label:hover {
+	text-decoration: underline;
+	font-weight: bold;
+	width: 100%;
+	border: 5px solid black;
+	border-radius: 30px;
+	display: inline-block;
+}
+
+#topping_container label:checked {
+	text-decoration: underline;
+	font-weight: bold;
+	width: 100%;
+	border: 5px solid black;
+	border-radius: 30px;
+	display: inline-block;
+	background-color: red;
+}
+
+input:checked + input:checked>label {
+	background-color: red;
+}
+
+label {
+	display: inline-block;
+	width: 100%;
+}
