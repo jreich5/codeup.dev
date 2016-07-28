@@ -1,0 +1,42 @@
+h1, h2, h3, h4, h5, h6 {
+  text-decoration: underline;
+  color: #449;
+
+}
+body {
+  background-color: papayawhip;
+  background-image: url("/img/cool_background.jpg");
+  background-size: 1000px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 1em; 
+}
+ol {
+  list-style: armenian;
+}
+@keyframes example {
+  from {
+    color: blue;
+    font-size: inherit;
+  }
+  to {
+    color: red;
+    font-size: 2em
+    border: 10px solid black;
+  }
+}
+a:hover {
+  font-size: 10em;
+  animation-name: example;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+dt {
+  font-style: italic;
+}
+dd {
+  padding-bottom: 20px;
+}
+
+/** {
+  border: 5px black solid;
+}*/
