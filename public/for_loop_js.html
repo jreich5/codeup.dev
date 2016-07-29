@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        "use strict";
+
+        // =========EXERCISE 1========= //
+
+        console.log("Starting exercise 1 output...");
+
+        var numberOutput = 1;
+        for (var i = 1; i <= 10; ++i) {
+            numberOutput = (i%10);
+            for (var j = 1; j < i; ++j) {
+                numberOutput += String((i%10));
+            }
+            console.log(numberOutput);
+        }
+
+        // codeup.dev/for_loop_js.html
+
+
+        // Generates last output in a clever way //
+
+        // numberOutput = numberOutput.split("");
+
+        // for (i =0; i < numberOutput.length; i++) {
+        //     if (numberOutput[i] == "1") {
+        //         numberOutput[i] = numberOutput.splice(numberOutput[i], 0);
+        //     }
+        // }
+        // console.log(numberOutput.join(""));
+
+
+        // =========EXERCISE 2========= //
+        console.log("Starting exercise 2 output...");
+        var random = Math.floor((Math.random() * 10) + 1);
+        for (var i = 1; i <= 10; ++i) {
+            console.log(random + "x" + i + "=" + random*i);
+        }
+
+        // =========EXERCISE 3========= //
+
+        console.log("Starting exercise 3 output...");
+
+        for (var i = 1; i <= 10; ++i) {
+            var random = Math.floor(Math.random() * (200 - 20 + 1)) + 20;
+            if (random % 2 == 0) {
+                console.log(random + " is even.")    
+            } else {
+                console.log(random + " is odd.")    
+            }
+        }
+
+        // =========EXERCISE 4========= //
+
+        for (i = 100; i >= 5; i -= 5) {
+            console.log(i);
+        }
+
+        
+
+    </script>
+</body>
+</html>
