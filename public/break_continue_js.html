@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+    <script type="text/javascript">
+        "use strict";
+
+        // Generating odd random number //
+        var random = Math.floor((Math.random()*50)+1);
+        while (random % 2 == 0) {
+            console.log(random);
+            random = Math.floor((Math.random()*50)+1);
+        }    
+
+
+        // Exercise 1 //
+        console.log("Random odd number is: " + random);
+
+        for (var i = 1; i <=50; i += 2) {
+            if (i == random) {
+                console.log("Yikes! Skipping number: " + random);
+                continue;
+            }   console.log("Here is an odd number: " + i);
+        }
+        
+        // codeup.dev/break_continue_js.html
+    </script>
+</body>
+</html>
