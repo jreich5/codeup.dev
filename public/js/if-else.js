@@ -3,7 +3,7 @@
 
 // Problem 1
 
-var gradeAverage = (70 + 80 + 95)/3;
+var gradeAverage = (70 + 80 + 95) / 3;
 
 if (gradeAverage > 80) {
 	console.log("You're awesome!");
