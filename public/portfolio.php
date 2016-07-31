@@ -20,7 +20,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/welcome.php"><span id="expand">JUSTIN REICH</span></a>
+            <a class="navbar-brand" href="/welcome.php"><span id="expand myname">JUSTIN REICH</span></a>
           </div>
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -150,7 +150,6 @@
                 </ul>               
             </div>
             <div id="copyright">Copyright &copy Justin Reich 2016</div>
-    </div>
     </footer>
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>

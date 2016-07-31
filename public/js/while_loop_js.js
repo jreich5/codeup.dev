@@ -19,21 +19,20 @@ do {
 	console.log("Please sir, may I have " + conesRequested + "?");
 	
 	if (conesInventory < conesRequested && conesInventory != 0) {
-		console.log("I cannot sell you " + conesRequested  + ". I only have " + conesInventory + " left.")
+		console.log("I cannot sell you " + conesRequested  + ". I only have " + conesInventory + " left.");
 		conesRequested = conesInventory;
 	}
 	conesInventory -= conesRequested;
 
 	totalConesOrdered += conesRequested;
 	console.log(conesRequested + " cones were just sold...");
-	console.log("I have " + conesInventory + " left.")
+	console.log("I have " + conesInventory + " left.");
 	
 
 } while (conesInventory > 0);
 
 console.log("Yay! I sold them all!");
+console.log(conesInventory);
 
-
-// ========== Exercise 2 ============= //
 
 
