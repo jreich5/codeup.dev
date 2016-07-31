@@ -1,3 +1,1 @@
-*
-!.gitignore
-!codeup.dev/public/index.php
+.DS_Store
