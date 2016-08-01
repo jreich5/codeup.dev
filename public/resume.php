@@ -52,74 +52,95 @@
                 </span>
             </h1>
         <article id="resume">
-            <h3>WILLIAM E. "JUSTIN" REICH, II</h3>
-            <hr>
-            <h4>Contact</h4>
-            <hr>
-            <div id="contact_list">
+            <h3>Justin Reich</h3>
+
+            <section id="formattingContactSection">
+                <h4>Contact</h4>
+                <hr>
+                    <span>
+                        <a href="mailto:justinreich.dev@gmail.com">justinreich.dev@gmail.com</a>
+                    </span> 
+                    <span id="giveMeSpace">
+                        (210) 387-0390
+                    </span>
+                    <span>
+                        <a href="https://github.com/jreich5">github.com/jreich</a>
+                    </span>
+            </section>
+            
+            <div class="spacer"></div>
+            
+            <section class="spacing">
+                <h4>Objective</h4>
+                <hr>
+                <p>
+                    I am seeking full-time employment in the San Antonio area working in web devlopment with a focus on front end and UI/UX.
+                </p>
+            </section>
+
+            <div class="spacer"></div>
+            
+            <section class="spacing">
+                <h4>Skills & Abilities</h4>
+                <hr>
+                <p>
+                    PHP | HTML5 | CSS | JavaScript | Twitter Bootstrap | Laravel | MySQL | Git & Github | Vagrant Virtual Machine | Microsoft Office Suite
+                </p>
+            </section>
+
+            <div class="spacer"></div>
+
+            <section class="spacing">
+                <h4>Education</h4>
+                <hr>
+                    <dl>
+                        <dt>CODEUP | JULY - NOV 2016</dt>
+                        <dd>Codeup is a full-time, four month, full-stack web development bootcamp. Course curriculum and keyboard time focused mainly on LAMP+J web applications, styling with HTML, CSS, and bootstrap, and daily use of version control through Git and Github.</dd>
+                        <dt>UNIVERSITY OF TEXAS AT SAN ANTONIO | AUG 2004 - MAY 2010</dt>
+                        <dd>Master of Music in Piano Pedagogy and Performance (4.0 GPA)</dd>
+                        <dd>Bachelor of Music in Piano Performance, Magna Cum Laude (3.89 GPA)</dd>
+                    </dl>
+            </section>
+
+            <div class="spacer"></div>
+            
+            <section class="spacing">
+                <h4 id="moveHigher">Web Development Projects</h4>
+                <hr>
+                <p>
+                    http://GetAhGeek.com - developed with two other Codeup students while attending Codeup
+                </p>
+            </section>
+
+            <div class="spacer"></div>
+            
+            <section class="spacing">
+                <h4>Development Work Experience</h4>
+                <hr>
+                <p>
+                    Test
+                </p>
+            </section>
+
+            <div class="spacer"></div>
+            
+            <section class="spacing">
+                <h4>Other Work Experience</h4>
+                <hr>
                 <ul>
-                    <li class="col-md-4"><a href="mailto:justinreich.dev@gmail.com">justinreich.dev@gmail.com</a></li>
-                    <li class="col-md-4">(210) 387-0390</li>
-                    <li class="col-md-4"><a href="https://github.com/jreich5">github.com/jreich</a></li>
+                    <li>Piano Instructor - Musical Arts Center of San Antonio, Inc.</li>
+                    <li>Assistant Center Director - Musical Arts Center of San Antonio, Inc.</li>
+                    <li>Performance Club Director - Musical Arts Center of San Antonio, Inc.</li>
+                    <li>Placement Representative - Musical Arts Center of San Antonio, Inc.</li>
+                    <li>Admistrative Assistant - Musical Arts Center of San Antonio, Inc.</li>
+                    <li>Graduate Teaching Assistant - University of Texas at San Antonio</li>
+                    <li>Admistrative Assistant - Reich Associates, Inc.</li>
+                    <li>Library Assistant - Oblate School of Theology</li>
                 </ul>
-            </div>
-            <hr>
-            <h4>Objective</h4>
-            <hr>
-            <p>
-                I am seeking employment opportunities in web devlopment to contribute to a team using Front-End and UI/UX design methodologies and technologies.
-            </p>
+            </section>
 
-            <hr>
-            <h4>Web Development Projects</h4>
-            <hr>
-            <p>
-                http://GetAhGeek.com
-            </p>
-
-            <hr>
-            <h4>Work Experience</h4>
-            <hr>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-
-            <hr>
-            <h4>Education</h4>
-            <hr>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <div class="spacer"></div>
+            
         </article>
     </main>
     </div>
