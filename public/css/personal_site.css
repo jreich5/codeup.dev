@@ -217,6 +217,17 @@ video#bgvid {
 
 /*====================FORMATTING FOR RESUME PAGE======================*/
 
+#resume h6, h5, h4 {
+	float: right;
+	position: relative;
+	bottom: 19px;
+	padding-left: 10px;
+}
+
+#resume hr {
+
+}
+
 #resume h4 {
 	text-align: right;
 }
@@ -229,6 +240,11 @@ video#bgvid {
 /*	float: left;*/
 }
 
+#resume a {
+	margin: 0;
+	padding: 0;
+}
+
 #contact_list ul:after {
   clear: both;
   display: block;
@@ -237,11 +253,40 @@ video#bgvid {
   position: relative;
 }
 
-#contact_list ul li {
-    float: left;
+#contact_list {
     font-size: 1.5em;
-    text-align: center;
-    list-style: none;
+}
+
+#contact_list span  {
+	text-align: center;
+}
+
+/*#moveHigher {
+	bottom: 19px;
+}*/
+
+#resume section {
+	padding: 0;
+	margin: 0;
+}
+
+#formattingContactSection {
+	position: relative;
+	text-align: center;
+	font-size: 1.6em;
+}
+
+.spacer {
+	height: 50px;
+}
+
+#moveUp {
+	padding-bottom: 100px;
+}
+
+#giveMeSpace {
+	padding-left: 10%; 
+	padding-right: 10%;
 }
 
 /*==================ANIMATION FOR "WELCOME"========================*/
