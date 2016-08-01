@@ -1,0 +1,78 @@
+<!-- codeup.dev/math.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Math</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        // Must Be Numeric Function 
+
+        function numericCheck (input) {
+            if (typeof input !== "number") {
+                return "inputs must be numeric"
+            } else {
+                return input;
+            }
+        }
+
+        // Function to Sum Two Numbers
+
+        function sumNumbers (a, b) {
+            var value = a + b;
+            return numericCheck(value);
+        }
+        console.log(sumNumbers(4, 4));
+
+
+        // Function to Subtract One Number from Another
+
+        function subtractNumbers (a, b) {
+            var value = a - b;
+            return numericCheck(value);
+        }
+        console.log(subtractNumbers(4, 4));
+
+
+        // Function to Multiply Two Numbers
+
+        function multiplyNumbers (a, b) {
+            var value = a * b;
+            return numericCheck(value);
+        }
+        console.log(multiplyNumbers(4, 4));
+
+
+        // Divide Two Numbers
+
+        function divideNumbers (a, b) {
+            var value = a / b;
+            return numericCheck(value);
+        }
+        console.log(divideNumbers(4, 4));
+
+
+        // Square a Number (Without using the * Operator)
+
+        function squareNumber (a) {
+            var value = Math.pow(a,2);
+            return numericCheck(value);
+        }
+        console.log(squareNumber(4));
+
+
+        // Sums Two Squares (without using * or +)
+
+        function sumSquaredNumbers (a, b) {
+            var value = Math.pow(a,2) + Math.pow(b,2);
+            return numericCheck(value);
+        }
+        console.log(sumSquaredNumbers(4, 4));
+
+    </script>
+</body>
+</html>
