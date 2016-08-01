@@ -9,7 +9,7 @@ var myNameIs = 'Justin'; // TODO: Fill in your name here.
 // When called, the function should log a message that says hello from the passed in name.
 
 function sayHello (name) {
-    return console.log("Hello from " + name);
+    console.log("Hello from " + name);
 }
 
 

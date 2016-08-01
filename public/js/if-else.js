@@ -20,7 +20,6 @@ function gradesAveraged (grades) {
     var gradeTotal = 0;
     for (var i = 0; i < grades.length; i++) {
         gradeTotal += grades[i];
-
     }
     return gradeTotal / grades.length; 
 }
@@ -129,7 +128,7 @@ function flipsCoin () {
 
 function randomChoice (choice1, choice2) {
     var message = (flipsCoin() == "heads") ? choice1 : choice2;
-    console.log(message);
+    return message;
 }
 
-randomChoice("Buy a car.", "Buy a house.");
+console.log(randomChoice("Buy a car.", "Buy a house."));
