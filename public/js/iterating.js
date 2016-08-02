@@ -17,4 +17,17 @@
     }
   	
 
+    var reverseArray = [];
+
+    for (var i = names.length -1; i >= 0; i -= 1) {
+    	reverseArray.push(names[i])
+    }
+
+    console.log(reverseArray);
+
+
+    names.forEach(function(name, index, array){
+    	console.log(name);
+    });
+
 })();
