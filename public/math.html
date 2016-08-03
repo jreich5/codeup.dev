@@ -10,13 +10,22 @@
     <script>
         'use strict';
 
-        // Must Be Numeric Function 
+        // =========== DEFINITIONS ============= //
 
-        function numericCheck (input) {
-            if (typeof input !== "number") {
-                return "inputs must be numeric"
+        // Response Function
+
+        function filterUserInputs () {
+            var numberInput = prompt("Enter a number.");
+            if (numberInput == null) {
+                alert("Please reload the page if you wish to use the program");
+                error(); //breaks code from running further
+            } else if (isNaN(parseInt(numberInput))) {
+                while (isNaN(parseInt(numberInput))) {
+                    numberInput = prompt("Please enter a valid number.");
+                }
+                return parseInt(numberInput);
             } else {
-                return input;
+                return parseInt(numberInput);
             }
         }
 
@@ -24,54 +33,78 @@
 
         function sumNumbers (a, b) {
             var value = a + b;
-            return numericCheck(value);
+            return value;
         }
-        console.log(sumNumbers(4, 4));
 
 
         // Function to Subtract One Number from Another
 
         function subtractNumbers (a, b) {
             var value = a - b;
-            return numericCheck(value);
+            return value;
         }
-        console.log(subtractNumbers(4, 4));
 
 
         // Function to Multiply Two Numbers
 
         function multiplyNumbers (a, b) {
             var value = a * b;
-            return numericCheck(value);
+            return value;
         }
-        console.log(multiplyNumbers(4, 4));
 
 
         // Divide Two Numbers
 
         function divideNumbers (a, b) {
             var value = a / b;
-            return numericCheck(value);
+            return value;
         }
-        console.log(divideNumbers(4, 4));
 
 
         // Square a Number (Without using the * Operator)
 
         function squareNumber (a) {
             var value = Math.pow(a,2);
-            return numericCheck(value);
+            return value;
         }
-        console.log(squareNumber(4));
 
 
         // Sums Two Squares (without using * or +)
 
         function sumSquaredNumbers (a, b) {
             var value = Math.pow(a,2) + Math.pow(b,2);
-            return numericCheck(value);
+            return value;
         }
-        console.log(sumSquaredNumbers(4, 4));
+
+        // =========== PROCEDURAL CODE ============= //
+
+
+        var userResponse = prompt("Would you like to add, subtract, divide, or multiply?");
+
+        switch (userResponse) {
+        case "add":
+            var firstNumber = filterUserInputs();
+            var secondNumber = filterUserInputs();
+            alert("The answer is " + sumNumbers(firstNumber, secondNumber));
+            break;
+        case "subtract":
+            var firstNumber = filterUserInputs();
+            var secondNumber = filterUserInputs();
+            alert("The answer is " + subtractNumbers(firstNumber, secondNumber));
+            break;
+        case "divide":
+            var firstNumber = filterUserInputs();
+            var secondNumber = filterUserInputs();
+            alert("The answer is " + divideNumbers(firstNumber, secondNumber));
+            break;
+        case "multiply":
+            var firstNumber = filterUserInputs();
+            var secondNumber = filterUserInputs();
+            alert("The answer is " + multiplyNumbers(firstNumber, secondNumber));
+            break;
+        default:
+            alert("Please reload this page and type one of the following choices in lower case: add, subtract, divide, or multiply.");
+        }
 
     </script>
 </body>
