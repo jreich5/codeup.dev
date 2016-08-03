@@ -18,7 +18,7 @@
             var numberInput = prompt("Enter a number.");
             if (numberInput == null) {
                 alert("Please reload the page if you wish to use the program");
-                error(); //breaks code from running further
+                return; //breaks code from running further
             } else if (isNaN(parseInt(numberInput))) {
                 while (isNaN(parseInt(numberInput))) {
                     numberInput = prompt("Please enter a valid number.");
@@ -76,10 +76,31 @@
             return value;
         }
 
+        // Average of Three
+
+        function averageOfThree (a, b, c) {
+            var value = (a + b + c) / 3;
+            return value;
+        }
+
+        function averageOfThreeOrSquare () {
+            // do you want to average three or square one number?
+            var userChoice = prompt("Would you like to average or square?")
+            if (userChoice == "average") {
+                var firstNumber = filterUserInputs();
+                var secondNumber = filterUserInputs();
+                var thirdNumber = filterUserInputs();
+                alert("The answer is " + averageOfThree(firstNumber, secondNumber, thirdNumber).toFixed(2));
+            } else if (userChoice == "square") {
+                var firstNumber = filterUserInputs();
+                alert("The answer is " + squareNumber(firstNumber));
+            }
+        }
+
         // =========== PROCEDURAL CODE ============= //
 
 
-        var userResponse = prompt("Would you like to add, subtract, divide, or multiply?");
+        var userResponse = prompt("Would you like to add, subtract, divide, multiply, or other?");
 
         switch (userResponse) {
         case "add":
@@ -101,6 +122,9 @@
             var firstNumber = filterUserInputs();
             var secondNumber = filterUserInputs();
             alert("The answer is " + multiplyNumbers(firstNumber, secondNumber));
+            break;
+        case "other":
+            averageOfThreeOrSquare();
             break;
         default:
             alert("Please reload this page and type one of the following choices in lower case: add, subtract, divide, or multiply.");
