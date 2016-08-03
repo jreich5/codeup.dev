@@ -109,17 +109,12 @@
 
         books.forEach(function(element, index, array) {
             console.log("Book #" + index);
-        });
-
-        books.forEach(function(element, index, array) {
             console.log("Title: " + books[index].title);
-        });
-
-        books.forEach(function(element, index, array) {
             console.log("The author is: " + books[index].author.firstName + " " + books[index].author.lastName);
         });
-        
         console.log("---");
+
+       
         // end loop here
 
 
