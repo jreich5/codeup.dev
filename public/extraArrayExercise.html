@@ -1,0 +1,110 @@
+<!-- codeup.dev/extraArrayExercise.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Extra Array Exercise</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // (function () {
+            
+        var sampleArray = ["Bees", "Turtles", "Wombat", "Kevin"];    
+    
+        function returnRandomElement (array) {
+            var randomElementIndex = Math.floor((Math.random() * array.length));
+            var randomElement = array[randomElementIndex];
+            return randomElement;
+        }
+
+        console.log(returnRandomElement(sampleArray));
+ 
+        console.log("\nTwelve to twenty-four exercise...\n ");
+
+        function twelveToTwentyFour (timeString) {
+            var timeArray = timeString.split(""); // .splice(correctedTime.length - 2, 1);
+            var secondToLastElement = timeArray[timeArray.length - 2].toLowerCase();
+            if (secondToLastElement == "a") {
+                timeArray.splice(timeArray.length - 2, 2);
+                timeArray.splice(timeArray.length - 3, 1);
+                timeArray = timeArray.join("");
+                if (timeArray.substring(0, 2) == 12) {
+                    timeArray = timeArray.split("");
+                    timeArray.splice(0, 2, "0", "0");
+                } else {
+                    if (timeArray.length == 3) {
+                    timeArray = timeArray.split("");
+                    timeArray.unshift("0");
+                    } else {
+                        timeArray = timeArray.split("");
+                    }
+                }
+            } else {
+                timeArray.splice(timeArray.length - 2, 2);
+                timeArray.splice(timeArray.length - 3, 1);
+                timeArray = timeArray.join("");
+                timeArray = parseInt(timeArray);
+                timeArray += 1200;
+                timeArray = timeArray.toString();
+                timeArray = timeArray.split("");
+            }
+                timeArray.splice(timeArray.length - 2, 0, ":")
+                timeArray = timeArray.join("");
+                return timeArray;
+        }
+        console.log(twelveToTwentyFour("2:45Am"));
+        console.log(twelveToTwentyFour("12:45Am"));
+        console.log(twelveToTwentyFour("11:45Am"));
+        console.log(twelveToTwentyFour("2:45pm"));
+        console.log(twelveToTwentyFour("11:45pm"));
+
+
+             /*
+             find the second to last element in the new array and store in lower case to the variable dayBinary
+             if (second to last character.toLowerCase() is == "a") {
+                 splice out the last two characters
+                 splice out the :
+                 join the elements to a single string
+                 convert to number
+                 if (first number is 12) {
+                     convert to string
+                     splice out the first two characters and replace with 00    
+                 }
+             else {
+                splice out the last two characters
+                splice out the :
+                join the elements into a single string
+                convert the string to a number
+                add 1200
+                convert to a string
+                split into individual characters
+                splice in :
+                
+
+
+             }    
+
+
+
+            }    
+            */
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // })()
+
+    </script>
+</body>
+</html>
