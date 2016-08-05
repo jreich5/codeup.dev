@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+==<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- <link rel="stylesheet" href="/css/bootstrap.css"> -->
@@ -95,7 +95,7 @@
                 <hr>
                     <dl>
                         <dt>CODEUP | JULY - NOV 2016</dt>
-                        <dd>Codeup is a full-time, four month, full-stack web development bootcamp. Course curriculum and keyboard time focused mainly on LAMP+J web applications, styling with HTML, CSS, and bootstrap, and daily use of version control through Git and Github.</dd>
+                        <dd>Codeup is a full-time, four month, full stack web development bootcamp. Course curriculum and keyboard time is focused mainly on teaching the fundementals of programming by building web applications. Skills covered include development using LAMP+J, styling with HTML, CSS, and bootstrap, and daily use of version control through Git and Github.</dd>
                         <dt>UNIVERSITY OF TEXAS AT SAN ANTONIO | AUG 2004 - MAY 2010</dt>
                         <dd>Master of Music in Piano Pedagogy and Performance (4.0 GPA)</dd>
                         <dd>Bachelor of Music in Piano Performance, Magna Cum Laude (3.89 GPA)</dd>
