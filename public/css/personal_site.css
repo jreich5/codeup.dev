@@ -217,6 +217,11 @@ video#bgvid {
 
 /*====================FORMATTING FOR RESUME PAGE======================*/
 
+.test {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
 #resume h6, h5, h4 {
 	float: right;
 	position: relative;
@@ -243,6 +248,12 @@ video#bgvid {
 #resume a {
 	margin: 0;
 	padding: 0;
+
+}
+
+#resume a:hover {
+	color: ;
+	
 }
 
 #contact_list ul:after {

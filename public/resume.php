@@ -1,4 +1,4 @@
-==<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- <link rel="stylesheet" href="/css/bootstrap.css"> -->
@@ -38,7 +38,7 @@
             <!-- <source src="/video/sky.MOV" type="video/webm">
             <source src="/video/sky.MOV" type="video/mp4"> -->
         </video>
-        <main class="container fade-in content_body">
+        <main class="container fade-in content_body test">
 
             
             <h1>
@@ -57,15 +57,15 @@
             <section id="formattingContactSection">
                 <h4>Contact</h4>
                 <hr>
-                    <span>
+                    <div class="col-md-4">
                         <a href="mailto:justinreich.dev@gmail.com">justinreich.dev@gmail.com</a>
-                    </span> 
-                    <span id="giveMeSpace">
+                    </div class="col-md-4"> 
+                    <div id="giveMeSpace">
                         (210) 387-0390
-                    </span>
-                    <span>
+                    </div class="col-md-4">
+                    <div>
                         <a href="https://github.com/jreich5">github.com/jreich</a>
-                    </span>
+                    </div>
             </section>
             
             <div class="spacer"></div>
