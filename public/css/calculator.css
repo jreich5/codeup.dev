@@ -15,7 +15,16 @@ body {
 h1 {
     position: relative;
     text-align: center;
-    font-size: 4em;
+    font-size: 3em;
+    background-color: gray;
+    width: 100%;
+    font-family: sans-serif;
+}
+
+h4 {
+    position: relative;
+    text-align: center;
+    font-size: 1em;
     background-color: gray;
     width: 100%;
     font-family: sans-serif;
@@ -24,7 +33,7 @@ h1 {
 h3 {
     position: relative;
     text-align: center;
-    font-size: 3em;
+    font-size: 2em;
     background-color: gray;
     width: 100%;
     font-family: sans-serif;
