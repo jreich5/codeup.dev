@@ -101,12 +101,14 @@ Winter primitive camping is available in the Apgar Picnic Area and in the St. Ma
         (function() {
         'use strict';
 
-        $('ul').each(function (index, element) {
-            $(this).children('li').first().css('font-weight', 'bold');
+     
+
+        $('dd').click(function(e) {
+            $(this).toggle();
         });
 
-        $('li').click(function(e) {
-            $(this).parent().addClass('invisible');
+         $('li').click(function(e) {
+            $(this).parent().hide();
         });
 
 
