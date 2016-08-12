@@ -20,7 +20,10 @@
 </head>
 <body>
 
+
     <h1>Top Ten Questions about Glacier National Park</h1>
+
+    <button>Toggle Answers</button>
 
     <dl>
         <dt>Where is Glacier National Park located?</dt>
@@ -65,7 +68,32 @@ Winter primitive camping is available in the Apgar Picnic Area and in the St. Ma
         <dd class="invisible">Vehicles, and vehicle combinations, longer than 21 feet (including bumpers) or wider than 8 feet (including mirrors) are prohibited between Avalanche Campground and the Sun Point parking area. You may however, drive to Avalanche if traveling east, and to Sun Point, if traveling west. Vehicles over 10 feet in height may have difficulty driving west from Logan Pass due to rock overhangs. Stock trucks and trailers may access Packers Roost and Siyeh Bend.</dd>
     </dl>
 
-    <button>Toggle Answers</button>
+    <h3>Denali National Park</h3>
+    <ul>
+        <li>DNP is home to the highest peak in North America, Denali. Called "The High One" in language of the Athabascan tribe, this towering peak stands at 20,320 feet above sea level.</li>
+        <li>The year of 1910 marked the first time that anyone had successfully summited Denali. It was a group of local residents who celebrated with hot chocolate and donuts.</li>
+        <li>Sable Pass inside DNP is known to be the best area to spot massive grizzly bears.</li>
+        <li>There are 169 different bird species, 39 mammal species, 14 fish species, and one species of amphibian known in Denali, whilst the park is also home to 1,500 species of vascular plants, lichens and mosses.</li>
+    </ul>
+    
+    
+    <h3>Yellowstone National Park</h3>
+    <ul>
+        <li>World's First National Park.</li>
+        <li>A designated World Heritage Site and designated Biosphere Reserve.</li>
+        <li>3,472 square miles or 8,987 square km.</li>
+        <li>96 % in Wyoming an 3 % in Montana.</li>
+    </ul>
+
+    <h3>Yosemite National Park</h3>
+    <ul>
+        <li>El Capitan is the largest granite monolith in the world. It rises more than 3,000 feet above the valley floor and is a favorite for experienced rock climbers.</li>
+        <li>Yosemite Falls: This is the tallest waterfall in North America. Snow runoff cascades down the 2,425 foot drop, with peak flow in May. In winter, an ice cone is often visible at the top of the falls.</li>
+        <li>Giant Sequoias and Mariposa Grove: Mariposa Grove contains about 500 mature giant sequoias. </li>
+        <li>There are 840 miles of trails to hike in Yosemite National Park</li>
+    </ul>
+
+
     
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript">
@@ -73,11 +101,13 @@ Winter primitive camping is available in the Apgar Picnic Area and in the St. Ma
         (function() {
         'use strict';
 
-        $('button').click(function(e) {
-            $('dd').toggleClass('invisible');
-        })
+        $('ul').each(function (index, element) {
+            $(this).children('li').first().css('font-weight', 'bold');
+        });
 
-
+        $('li').click(function(e) {
+            $(this).parent().addClass('invisible');
+        });
 
 
         })()
