@@ -6,7 +6,7 @@
     <title>jQuery Methods Exercise</title>
     <style type="text/css">
         .invisible {
-            color: transparent;
+            color: black;
         }
 
         dt {
@@ -68,8 +68,8 @@ Winter primitive camping is available in the Apgar Picnic Area and in the St. Ma
         <dd class="invisible">Vehicles, and vehicle combinations, longer than 21 feet (including bumpers) or wider than 8 feet (including mirrors) are prohibited between Avalanche Campground and the Sun Point parking area. You may however, drive to Avalanche if traveling east, and to Sun Point, if traveling west. Vehicles over 10 feet in height may have difficulty driving west from Logan Pass due to rock overhangs. Stock trucks and trailers may access Packers Roost and Siyeh Bend.</dd>
     </dl>
 
-    <h3>Denali National Park</h3>
-    <ul>
+    <h3 class="toggle-denali">Denali National Park</h3>
+    <ul class="denali">
         <li>DNP is home to the highest peak in North America, Denali. Called "The High One" in language of the Athabascan tribe, this towering peak stands at 20,320 feet above sea level.</li>
         <li>The year of 1910 marked the first time that anyone had successfully summited Denali. It was a group of local residents who celebrated with hot chocolate and donuts.</li>
         <li>Sable Pass inside DNP is known to be the best area to spot massive grizzly bears.</li>
@@ -77,16 +77,16 @@ Winter primitive camping is available in the Apgar Picnic Area and in the St. Ma
     </ul>
     
     
-    <h3>Yellowstone National Park</h3>
-    <ul>
+    <h3 class="toggle-yellowstone">Yellowstone National Park</h3>
+    <ul class="yellowstone">
         <li>World's First National Park.</li>
         <li>A designated World Heritage Site and designated Biosphere Reserve.</li>
         <li>3,472 square miles or 8,987 square km.</li>
         <li>96 % in Wyoming an 3 % in Montana.</li>
     </ul>
 
-    <h3>Yosemite National Park</h3>
-    <ul>
+    <h3 class="toggle-yosemite">Yosemite National Park</h3>
+    <ul class="yosemite">
         <li>El Capitan is the largest granite monolith in the world. It rises more than 3,000 feet above the valley floor and is a favorite for experienced rock climbers.</li>
         <li>Yosemite Falls: This is the tallest waterfall in North America. Snow runoff cascades down the 2,425 foot drop, with peak flow in May. In winter, an ice cone is often visible at the top of the falls.</li>
         <li>Giant Sequoias and Mariposa Grove: Mariposa Grove contains about 500 mature giant sequoias. </li>
@@ -98,21 +98,27 @@ Winter primitive camping is available in the Apgar Picnic Area and in the St. Ma
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript">
         
-        (function() {
+        $('document').ready(function() {
         'use strict';
 
-     
-
         $('dd').click(function(e) {
-            $(this).toggle();
+            $(this).fadeToggle();
+        });
+     
+        $('.toggle-denali').click(function(e) {
+            $('.denali').fadeToggle();
         });
 
-         $('li').click(function(e) {
-            $(this).parent().hide();
+
+        $('.toggle-yellowstone').click(function(e) {
+            $('.yellowstone').fadeToggle();
         });
 
+        $('.toggle-yosemite').click(function(e) {
+            $('.yosemite').fadeToggle();
+        });
 
-        })()
+        });
 
 
 
