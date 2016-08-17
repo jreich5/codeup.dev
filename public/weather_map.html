@@ -10,35 +10,34 @@
     <link rel="stylesheet" type="text/css" href="css/weather_map.css">
 </head>
 
-<body class="body container">
+<body class="body">
 
     <main class="container">
         
-        <div class="weatherApp">
+        <div class="weatherApp ">
             <h1 class="mainHeader">Weather Map Application</h1>
+            <h6>Drag the map marker to a location for the  3-day forcast.</h6>
             <div class="weatherData">
                 <h2 class="placeHeader" id="place"></h2>
-                <table class="forcast">
-                    <tr class="forcastPanels">
-                        <td class="panel firstPanel" id="panel1"></td>
-                        <td class="panel secondPanel" id="panel2"></td>
-                        <td class="panel thirdPanel" id="panel3"></td>
-                    </tr>
-                </table>
+                
+                <div class="forcastPanels">
+                    <div class="panel firstPanel" id="panel1"></div>
+                    <div class="panel secondPanel" id="panel2"></div>
+                    <div class="panel thirdPanel" id="panel3"></div>
+                </div>
             </div>
-
-            <div class="googleMap">
-                <div></div>
+            <div class="mapContainer">
+                <div id="map-canvas"></div>
             </div>
-
         </div>
+        <br>
 
-        <input type="text" class="inputField" id="latitude" placeholder="Enter latitude">
-        <input type="text" class="inputField" id="longitude" placeholder="Enter longitude">
+        <input type="text" class="inputField" id="latitude" placeholder="Enter latitude" value="29.428070695992464">
+        <input type="text" class="inputField" id="longitude" placeholder="Enter longitude" value="-98.4891371968231">
         <button id="updateButton">Update</button>
 
     </main>
-       
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhOmMFQD69je4sN6RQCkf_0TDkLnumJFM"></script>   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="js/weather_map.js"></script>
