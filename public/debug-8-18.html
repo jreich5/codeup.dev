@@ -17,6 +17,7 @@
     <div id="books"></div>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script>
+        (function(){
         "use strict";
 
         var friends = [
@@ -27,16 +28,15 @@
         ];
 
         var $friendSelect = $('#friend');
-        var options;
+        var options = '';
 
         friends.forEach(function (friend, i) {
             options += '<option value="' + (i + 1) + '">' + friend.name + '</option>'; // added +=, (i + ), friend.name
             console.log(options);
         });
 
-
-
         $friendSelect.html(options);
+        })()
     </script>
 </body>
 </html>
