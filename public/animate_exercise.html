@@ -44,6 +44,7 @@
         var $hide = $('#btn-hide');
         var $show = $('#btn-show');
         var $all = $('#btn-all');
+        var currentWidth = parseInt($box.css('width'));
 
         // TODO: "Move It" should move the box 100 pixels to the left
         $move.click(function(){
@@ -54,7 +55,7 @@
         // TODO: "Scale It" should expand the box width by 50%
         $scale.click(function(){
             $box.animate({
-                width: "+=50%"
+                width: currentWidth 1.5 + "px"
             }, 1000);
         })
 
@@ -77,14 +78,14 @@
         $all.click(function(){
             $box.animate({
                 right: "100px",
-                width: "+=50%"
-            }, 1000).animate({
+                width: currentWidth * 1.5 + "px"
+            }).animate({
                 opacity: "0"
-            }, 1000).animate({
+            }).animate({
                 right: "0",
                 opacity: "1",
-                width: "-=50%"
-            }, 1000);
+                width: currentWidth
+            });
         });
 
     });

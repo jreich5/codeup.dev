@@ -99,10 +99,9 @@ function buttonFunctionality () {
 
     // Set our map options
     var mapOptions = {
-        // Set the zoom level
+        
         zoom: 4,
 
-        // This sets the center of the map at our location
         center: {
             lat:  29.428070695992464,
             lng:  -98.4891371968231
@@ -130,8 +129,6 @@ function buttonFunctionality () {
         title:"Drag me!"
     });
 
-
- 
 
     google.maps.event.addListener(marker, 'dragend', function (event) {
         document.getElementById("latitude").value = this.getPosition().lat();
