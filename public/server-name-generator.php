@@ -15,8 +15,8 @@ function nameGenerator ($adjct, $nouns)
 function pageController() 
 {
     $data = [];
-    $data['adjct'] = ['good', 'new', 'best', 'last', 'long', 'great', 'little', 'worst', 'other', 'old'];
-    $data['nouns'] = ['people', 'history', 'way', 'art', 'world', 'information', 'map', 'bubbles', 'family', 'government'];
+    $data['adjct'] = ['tasty', 'gooey', 'poop green', 'fried', 'shrunkin', 'krunked', 'enraged', 'worst', 'other', 'old'];
+    $data['nouns'] = ['people', 'biscuit', 'bellybutton', 'afro', 'pam', 'amelie', 'justin', 'bubbles', 'max', 'government'];
     
     return $data;
 }
