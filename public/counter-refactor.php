@@ -1,46 +1,11 @@
-<!-- codeup.dev/ping.php -->
+<!-- codeup.dev/counter-refactor.php -->
 <?php
-
-function displayCount() 
-{
-    if (isset($_GET['up'])) {
-        $count = $_GET['up'];
-    } else {
-        $count = 0;
-    }
-    return $count;    
-}
-
-function increaseCount() 
-{
-    if (isset($_GET['up'])) {
-        $count = $_GET['up'];
-        $count += 1;
-    } else if (isset($_GET['miss'])) {
-        $count = $_GET['miss'];
-        $count += 1;
-    } else {
-        $count = 0;
-        $count += 1;
-    }
-    return $count;
-}
-
-function miss() 
-{
-    if (isset($_GET['miss'])) {
-        $count = $_GET['miss'];
-        $count = 0;
-        return $count;
-    }
-}
 
 function pageController()
 {
     $data = [];
-    $data['queryUp'] = '?up=';
-    $data['querymiss'] = '?miss=';
-    $data['url'] = '/pong.php';
+    $data['count'] = (isset($_GET['count'])) ? $_GET['count'] : 0;
+    $data['query'] = '?count=';
     return $data;
 }
 
@@ -57,7 +22,7 @@ extract(pageController());
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>GET Requests - Ping</title>
+    <title>GET Requests - Counter</title>
     <!-- Bootstrap Core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Custom CSS -->
@@ -79,9 +44,9 @@ extract(pageController());
 <body>
 
     <main class="container">
-        <h1>Count <?= displayCount(); ?></h1>
-        <a href="<?= $url . '?up=' . increaseCount(); ?>"><button>HIT</button></a>
-        <a href="<?= $url . '?miss=' . miss(); ?>"><button>MISS</button></a>
+        <h1>Counter <?= $count; ?></h1>
+        <a href="<?= $query . ($count + 1); ?>"><button>UP</button></a>
+        <a href="<?= $query . ($count - 1); ?>"><button>DOWN</button></a>
     </main>
     
     <!-- jQuery Version 1.11.1 -->

@@ -5,11 +5,10 @@ function displayCount()
 {
     if (isset($_GET['up'])) {
         $count = $_GET['up'];
-        return $count;
     } else {
         $count = 0;
-        return $count;
-    }    
+    }
+    return $count;    
 }
 
 function increaseCount() 
@@ -17,16 +16,14 @@ function increaseCount()
     if (isset($_GET['up'])) {
         $count = $_GET['up'];
         $count += 1;
-        return $count;
     } else if (isset($_GET['miss'])) {
         $count = $_GET['miss'];
         $count += 1;
-        return $count;
     } else {
         $count = 0;
         $count += 1;
-        return $count;
     }
+    return $count;
 }
 
 function miss() 
