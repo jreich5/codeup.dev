@@ -1,46 +1,11 @@
 <!-- codeup.dev/ping.php -->
 <?php
 
-function displayCount() 
-{
-    if (isset($_GET['up'])) {
-        $count = $_GET['up'];
-    } else {
-        $count = 0;
-    }
-    return $count;    
-}
-
-function increaseCount() 
-{
-    if (isset($_GET['up'])) {
-        $count = $_GET['up'];
-        $count += 1;
-    } else if (isset($_GET['miss'])) {
-        $count = $_GET['miss'];
-        $count += 1;
-    } else {
-        $count = 0;
-        $count += 1;
-    }
-    return $count;
-}
-
-function miss() 
-{
-    if (isset($_GET['miss'])) {
-        $count = $_GET['miss'];
-        $count = 0;
-        return $count;
-    }
-}
-
 function pageController()
 {
     $data = [];
-    $data['queryUp'] = '?up=';
-    $data['querymiss'] = '?miss=';
-    $data['url'] = '/pong.php';
+    $data['count'] = (isset($_GET['count'])) ? $_GET['count'] : 0;
+    $data['query'] = '/pong.php?count=';
     return $data;
 }
 
@@ -79,9 +44,9 @@ extract(pageController());
 <body>
 
     <main class="container">
-        <h1>Count <?= displayCount(); ?></h1>
-        <a href="<?= $url . '?up=' . increaseCount(); ?>"><button>HIT</button></a>
-        <a href="<?= $url . '?miss=' . miss(); ?>"><button>MISS</button></a>
+        <h1>Count <?= $count; ?></h1>
+        <a href="<?= '/pong.php?count=' . ($count + 1); ?>"><button>HIT</button></a>
+        <a href="<?= '/ping.php?count=' . ($count = 0); ?>"><button>MISS</button></a>
     </main>
     
     <!-- jQuery Version 1.11.1 -->
