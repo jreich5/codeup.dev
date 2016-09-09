@@ -2,16 +2,27 @@
 
 <?php
 
+
+session_start();
 function pageController() 
 {
     $data = [];
-    $data['message'] = '';
+    $data['alert'] = '';
     if (!empty($_POST)) {
         if ($_POST['username'] == 'guest' && $_POST['password'] == 'password') {
-            header("Location: /authorized.php");
+            $_SESSION['logged_in_user'] = $_POST['username'];
+            if (isset($_SESSION['logged_in_user'])) {
+                var_dump($_SESSION['logged_in_user']);
+                header("Location: /authorized.php");
+            }
             die;
         } else {
-            $data['message'] = 'Invalid login'; // improve UI with bootstrap alert
+            $data['alert'] =
+            '<div class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                Enter a valid username and password
+            </div>'; 
         }
     }  
     return $data;
@@ -35,7 +46,6 @@ extract(pageController());
 
     <!-- Bootstrap Core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="===PATH HERE===">
     <style>
@@ -63,18 +73,16 @@ extract(pageController());
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
     </form>
-    <h2><?= $message; ?></h2>
+    <br>
+    <?= $alert; ?>
 
     </main>
     
     <!-- jQuery Version 1.11.1 -->
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
     <!-- Custom JS -->
-
     <script src="===PATH HERE==="></script>
 
 </body>

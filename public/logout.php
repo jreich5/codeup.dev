@@ -1,14 +1,29 @@
-<!-- codeup.dev/authrorized.php -->
-<?php
+<!-- codeup.dev/logout.php -->
+<?php 
 
-session_start();
-if (!$_SESSION['logged_in_user']) {
-    $message = "User is not authorized.";
-    header("Location: /login.php");
-} else {
-    $message = $_SESSION['logged_in_user'];
+// clear session data in memory & on disk and send user a new session cookie
+function clearSession()
+{
+    // clear $_SESSION array
+    session_unset();
+
+    // delete session data on the server and send the client a new cookie
+    session_regenerate_id(true);
 }
 
+// start the session (or resume an existing one)
+// this function must be called before trying to get or set any session data!
+session_start();
+
+if (isset($_POST['reset'])) {
+    if ($_POST['reset'] == 'counter') {
+        unset($_SESSION['view_count']);
+    } elseif ($_POST['reset'] == 'session') {
+        clearSession();
+    }
+}
+clearSession();
+header("Location: /login.php");
 ?>
 
 <!DOCTYPE html>
@@ -36,9 +51,7 @@ if (!$_SESSION['logged_in_user']) {
 
     <main class="container">
 
-        <h1>AUTHORIZED USER: <?= htmlspecialchars(strip_tags($message)); ?></h1> 
-
-        <a href="/logout.php"><button class="btn btn-default">Logout</button></a>
+        <h1>AUTHORIZED</h1> 
 
     </main>
     
