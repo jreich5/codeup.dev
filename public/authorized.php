@@ -3,8 +3,9 @@
 
 session_start();
 if (!$_SESSION['logged_in_user']) {
-    $message = "User is not authorized.";
+    $message = "''";
     header("Location: /login.php");
+    die;
 } else {
     $message = $_SESSION['logged_in_user'];
 }
