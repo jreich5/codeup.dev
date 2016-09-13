@@ -3,8 +3,9 @@
 
 function pageController()
 {
+    require_once "functions.php";
     $data = [];
-    $data['count'] = (isset($_GET['count'])) ? $_GET['count'] : 0;
+    $data['count'] = inputGet('count');
     $data['query'] = '/ping.php?count=';
     return $data;
 }

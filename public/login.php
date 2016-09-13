@@ -1,20 +1,14 @@
 <!-- codeup.dev/login.php -->
-
 <?php
-
-
-session_start();
+require_once "functions.php";
 function pageController() 
 {
     $data = [];
     $data['alert'] = '';
     if (!empty($_POST)) {
-        if ($_POST['username'] == 'guest' && $_POST['password'] == 'password') {
-            $_SESSION['logged_in_user'] = $_POST['username'];
-            if (isset($_SESSION['logged_in_user'])) {
-                var_dump($_SESSION['logged_in_user']);
-                header("Location: /authorized.php");
-            }
+        if (inputGet('username') == 'guest' && inputGet('password') == 'password') {
+            $_SESSION['logged_in_user'] = $_POST['username'];    
+            header("Location: /authorized.php");
             die;
         } else {
             $data['alert'] =
@@ -27,6 +21,7 @@ function pageController()
     }  
     return $data;
 } 
+session_start();
 extract(pageController());
 
 ?>

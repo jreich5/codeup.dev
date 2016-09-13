@@ -1,27 +1,26 @@
 <!-- codeup.dev/logout.php -->
 <?php 
-
+require_once "functions.php";
 // clear session data in memory & on disk and send user a new session cookie
 function clearSession()
 {
     // clear $_SESSION array
     session_unset();
-
+    // delete session data on the server
+    session_destroy();
     // delete session data on the server and send the client a new cookie
     session_regenerate_id(true);
+    session_start();
 }
 
-// start the session (or resume an existing one)
-// this function must be called before trying to get or set any session data!
-session_start();
-
-if (isset($_POST['reset'])) {
+if (inputHas('reset')) {
     if ($_POST['reset'] == 'counter') {
         unset($_SESSION['view_count']);
     } elseif ($_POST['reset'] == 'session') {
         clearSession();
     }
 }
+session_start();
 clearSession();
 header("Location: /login.php");
 ?>
