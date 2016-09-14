@@ -3,9 +3,9 @@
 
 function pageController()
 {
-    require_once "functions.php";
+    require_once "../input.php";
     $data = [];
-    $data['count'] = inputGet('count');
+    $data['count'] = Input::get('count');
     $data['query'] = '/pong.php?count=';
     return $data;
 }
