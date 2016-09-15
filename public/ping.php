@@ -5,7 +5,7 @@ function pageController()
 {
     require_once "../input.php";
     $data = [];
-    $data['count'] = Input::get('count');
+    $data['count'] = Input::get('count', 0);
     $data['query'] = '/pong.php?count=';
     return $data;
 }

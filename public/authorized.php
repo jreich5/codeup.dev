@@ -1,20 +1,18 @@
 <!-- codeup.dev/authrorized.php -->
 <?php
-require_once "functions.php";
+require_once "../Auth.php";
+require_once "../Input.php";
 session_start();
-if (!$_SESSION['logged_in_user']) {
+if (!Auth::check()) {
     $message = "''";
-    header("Location: /login.php");
-    die;
+    Auth::redirect('/login.php');
 } else {
-    $message = $_SESSION['logged_in_user'];
+    $message = Auth::user();
 }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +27,7 @@ if (!$_SESSION['logged_in_user']) {
 </head>
 <body>
     <main class="container">
-        <h1>AUTHORIZED USER: <?= escape($message); ?></h1> 
+        <h1>AUTHORIZED USER: <?= Input::escape($message); ?></h1> 
         <a href="/logout.php"><button class="btn btn-default">Logout</button></a>
     </main>
     <!-- jQuery Version 1.11.1 -->
