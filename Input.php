@@ -20,9 +20,20 @@ class Input
      * @param mixed $default default value to return if key not found
      * @return mixed value passed in request
      */
-    public static function get($key, $default = 0)
+    public static function get($key, $default = null)
     {
-        return (self::has($key)) ? $_REQUEST[$key] : 0;
+        return (self::has($key)) ? $_REQUEST[$key] : $default;
+    }
+
+    /**
+     * Filter user input for code 
+     *
+     * @param string $input any user input submitted via GET or POST
+     * @return string value of user filtered input
+     */
+    public static function escape($input)
+    {
+        return htmlspecialchars(strip_tags($input));
     }
 
     ///////////////////////////////////////////////////////////////////////////
