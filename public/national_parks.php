@@ -21,6 +21,7 @@ function getInfo($dbc, $page, $limit)
 function pageController($dbc)
 {
     $data = [];
+    $data['stmt'] = $dbc->query('SELECT * FROM national_parks');
     $data['page'] = (isset($_GET['page'])) ? $_GET['page'] : 1;
     $data['limit'] = 4;
     $data['parks'] = getInfo($dbc, $data['page'], $data['limit']);
@@ -55,31 +56,19 @@ extract(pageController($dbc));
 <body>
     <main class="container"> 
         <?php  
+            echo "Rows: " . $stmt->rowCount() . PHP_EOL;
             echo '<table class="table table-bordered"><tr><th>Name</th><th>Location</th><th>Date Established</th><th>Area</th></tr>';
             foreach($parks as $park) {
                 echo '<tr><td>' . $park['name'] . '</td><td>' . $park['location'] . '</td><td>' . $park['date_established'] . '</td><td>' . $park['area_in_acres'] . '</td></tr>';
             }
             echo '</table>';
         ?>
-        <!-- <?php 
-            for($i = 0; $i < ;)
-        ?> -->
-        <div class="btn-group" role="group" aria-label="...">
-            <a href="<?= $query . ($page = 1); ?>"><button class="btn btn-default">1</button></a>
-            <a href="<?= $query . ($page = 2); ?>"><button class="btn btn-default">2</button></a>
-            <a href="<?= $query . ($page = 3); ?>"><button class="btn btn-default">3</button></a>
-            <a href="<?= $query . ($page = 4); ?>"><button class="btn btn-default">4</button></a>
-            <a href="<?= $query . ($page = 5); ?>"><button class="btn btn-default">5</button></a>
-            <a href="<?= $query . ($page = 6); ?>"><button class="btn btn-default">6</button></a>
-            <a href="<?= $query . ($page = 7); ?>"><button class="btn btn-default">7</button></a>
-            <a href="<?= $query . ($page = 8); ?>"><button class="btn btn-default">8</button></a>
-            <a href="<?= $query . ($page = 9); ?>"><button class="btn btn-default">9</button></a>
-            <a href="<?= $query . ($page = 10); ?>"><button class="btn btn-default">10</button></a>
-            <a href="<?= $query . ($page = 11); ?>"><button class="btn btn-default">11</button></a>
-            <a href="<?= $query . ($page = 12); ?>"><button class="btn btn-default">12</button></a>
-            <a href="<?= $query . ($page = 13); ?>"><button class="btn btn-default">13</button></a>
-            <a href="<?= $query . ($page = 14); ?>"><button class="btn btn-default">14</button></a>
-        </div>
+        <?php 
+            for ($i = 1; $i < $stmt->rowCount() / $limit; $i++) {
+                echo '<a href="' . $query . ($page = $i) . '"><button class="btn btn-default">' . $i . '</button></a>';
+            }
+
+        ?>
 
     </main>
     
