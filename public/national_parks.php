@@ -54,8 +54,9 @@ extract(pageController($dbc));
 
 <body>
     <main class="container"> 
+
+        <h1>National Parks List</h1>
         <?php  
-            echo "Rows: " . $stmt->rowCount() . PHP_EOL;
             echo '<table class="table table-bordered"><tr><th>Name</th><th>Location</th><th>Date Established</th><th>Area</th></tr>';
             foreach($parks as $park) {
                 echo '<tr><td>' . $park['name'] . '</td><td>' . $park['location'] . '</td><td>' . $park['date_established'] . '</td><td>' . $park['area_in_acres'] . '</td></tr>';
