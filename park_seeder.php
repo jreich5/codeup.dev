@@ -5,7 +5,7 @@ DEFINE ('DB_NAME', 'parks_db');
 DEFINE ('DB_USER', 'parks_user');
 DEFINE ('DB_PASS', 'parkme');
 
-require 'db_connect.php';
+require_once 'db_connect.php';
 
 $query1 = 'TRUNCATE national_parks;';
 $dbc->exec($query1);
