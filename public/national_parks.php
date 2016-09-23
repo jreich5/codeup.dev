@@ -31,7 +31,6 @@ function pageController($dbc)
 
 extract(pageController($dbc));
 
-
 ?>
 
 
@@ -67,9 +66,13 @@ extract(pageController($dbc));
             for ($i = 1; $i < $stmt->rowCount() / $limit; $i++) {
                 echo '<a href="' . $query . ($page = $i) . '"><button class="btn btn-default">' . $i . '</button></a>';
             }
-
+            if ($_GET['page'] < $stmt->rowCount() / $limit - 1) {
+                echo '<a href="' . $query . ($page = $_GET['page'] + 1) . '"><button class="btn btn-default">NEXT</button></a>';
+            }
+            if ($_GET['page'] > 1) {
+                echo '<a href="' . $query . ($page = $_GET['page'] - 1) . '"><button class="btn btn-default">PREVIOUS</button></a>';
+            }
         ?>
-
     </main>
     
     <!-- jQuery Version 1.11.1 -->
