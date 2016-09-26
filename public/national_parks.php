@@ -23,6 +23,7 @@ function pageController($dbc)
     $data = [];
     $data['stmt'] = $dbc->query('SELECT * FROM national_parks');
     $data['page'] = (isset($_GET['page'])) ? $_GET['page'] : 1;
+    $data['pageDisplay'] = (isset($_GET['page'])) ? $_GET['page'] : 1;
     $data['limit'] = 4;
     $data['parks'] = getInfo($dbc, $data['page'], $data['limit']);
     $data['query'] = '?page=';
@@ -56,22 +57,35 @@ extract(pageController($dbc));
     <main class="container"> 
 
         <h1>National Parks List</h1>
-        <?php  
-            echo '<table class="table table-bordered"><tr><th>Name</th><th>Location</th><th>Date Established</th><th>Area</th></tr>';
-            foreach($parks as $park) {
-                echo '<tr><td>' . $park['name'] . '</td><td>' . $park['location'] . '</td><td>' . $park['date_established'] . '</td><td>' . $park['area_in_acres'] . '</td></tr>';
-            }
-            echo '</table>';
-        ?>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Date Established</th>
+                    <th>Area</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach($parks as $park) : ?>
+                <tr>
+                    <td><?= $park['name'] ?></td>
+                    <td><?= $park['location'] ?></td>
+                    <td><?= $park['date_established'] ?></td>
+                    <td><?= number_format($park['area_in_acres']) . ' acres' ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
         <?php 
             for ($i = 1; $i < $stmt->rowCount() / $limit; $i++) {
-                echo '<a href="' . $query . ($page = $i) . '"><button class="btn btn-default">' . $i . '</button></a>';
+                echo '<a href="' . $query . ($pageDisplay = $i) . '"><button class="btn btn-default">' . $i . '</button></a>';
             }
-            if ($_GET['page'] < $stmt->rowCount() / $limit - 1) {
-                echo '<a href="' . $query . ($page = $_GET['page'] + 1) . '"><button class="btn btn-default">NEXT</button></a>';
+            if ($page < $stmt->rowCount() / $limit -1) {
+                echo '<a href="' . $query . ($page + 1) . '"><button class="btn btn-default">NEXT</button></a>';
             }
-            if ($_GET['page'] > 1) {
-                echo '<a href="' . $query . ($page = $_GET['page'] - 1) . '"><button class="btn btn-default">PREVIOUS</button></a>';
+            if ($page > 1) {
+                echo '<a href="' . $query . ($page - 1) . '"><button class="btn btn-default">PREVIOUS</button></a>';
             }
         ?>
     </main>
