@@ -72,12 +72,21 @@ $parks = [
     ['name' => 'Zion','location' => 'Utah','date_established' => '1919-11-19','area_in_acres' => '146597.60', 'description' => 'zion des'],
 ];
 
+$query2 = 'INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)';
+
+$stmt = $dbc->prepare($query2);
 
 foreach ($parks as $park) {
-    $query2 = "INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES ('{$park['name']}', '{$park['location']}', '{$park['date_established']}', '{$park['area_in_acres']}', '{$park['description']}')";
-    $numRows = $dbc->exec($query2);
-    // echo "Inserted ID: " . $dbc->lastInsertId() . PHP_EOL;
+    $stmt->bindValue(':name', $park['name'], PDO::PARAM_STR);
+    $stmt->bindValue(':location', $park['location'], PDO::PARAM_STR);
+    $stmt->bindValue(':date_established', $park['date_established'], PDO::PARAM_STR);
+    $stmt->bindValue(':area_in_acres', $park['area_in_acres'], PDO::PARAM_STR);
+    $stmt->bindValue(':description', $park['description'], PDO::PARAM_STR);
+    $stmt->execute();
 }
+
+
+    // $query2 = "INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES ('{$park['name']}', '{$park['location']}', '{$park['date_established']}', '{$park['area_in_acres']}', '{$park['description']}')";
 
 
 
