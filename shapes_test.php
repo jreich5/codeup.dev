@@ -1,6 +1,6 @@
 <?php 
 
-require_once 'Rectangle.php';
+
 require_once 'Square.php';
 
 echo 'Square results' . PHP_EOL;
