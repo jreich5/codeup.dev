@@ -2,14 +2,19 @@
 
 class Log 
 {
-    public $filename;
+    private $filename;
     
-    public $handle;
+    private $handle;
 
     public function __construct($prefix = 'log')
     {
         $this->filename = $prefix . date("Y-m-d");
         $this->handle = fopen($this->filename, 'a');
+    }
+
+    private function setFilename($filename)
+    {
+        $this->filename = (string) $filename;
     }
 
     public function logMessage($logLevel, $message)
@@ -37,5 +42,5 @@ class Log
     }
 }
 
-
+echo 'Log imported.' . PHP_EOL;
 
