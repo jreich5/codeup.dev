@@ -8,10 +8,10 @@ DEFINE ('DB_USER', 'parks_user');
 DEFINE ('DB_PASS', 'parkme');
 
 require_once("../db_connect.php");
+require_once("../Input.php");
    
 function getInfo($dbc, $page, $limit) 
 {
-
     $offset = ($page > 1) ? $page * $limit : 0;
     $stm = $dbc->prepare('SELECT * FROM national_parks LIMIT ' . ':limit' . ' OFFSET ' . ':offset' . ';');
     $stm->bindValue(':limit', $limit, PDO::PARAM_INT);
@@ -21,76 +21,65 @@ function getInfo($dbc, $page, $limit)
     return $rows;
 }
 
-// function insertInfo($dbc, $dateError, $areaError)
-// {
-//     if (!strtotime($_POST['date_established'])) {
-//         $dateError = 'Invalid date input.';
-//         return $dateError;
-//     } 
-//     if (!is_numeric($_POST['area_in_acres'])) {
-//         $areaError = 'Invalid area input.';
-//         return $areaError;
-//     } 
-
-//     $queryInsert = 'INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)';
-
-//     $stmt = $dbc->prepare($queryInsert);
-//     $stmt->bindValue(':name', $_POST['name'], PDO::PARAM_STR);
-//     $stmt->bindValue(':location', $_POST['location'], PDO::PARAM_STR);
-//     $stmt->bindValue(':date_established', $_POST['date_established'], PDO::PARAM_STR);
-//     $stmt->bindValue(':area_in_acres', $_POST['area_in_acres'], PDO::PARAM_STR);
-//     $stmt->bindValue(':description', $_POST['description'], PDO::PARAM_STR);
-//     $stmt->execute();
-    
-// }
-
+// Refactor out variable definitions from bindValues
 function insertInfo($dbc)
 {
-    // if (!strtotime($_POST['date_established'])) {
-    //     $dateError = 'Invalid date input.';
-    //     return $dateError;
-    // } 
-    // if (!is_numeric($_POST['area_in_acres'])) {
-    //     $areaError = 'Invalid area input.';
-    //     return $areaError;
-    // } 
-
     $queryInsert = 'INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)';
 
     $stmt = $dbc->prepare($queryInsert);
-    $stmt->bindValue(':name', $_POST['name'], PDO::PARAM_STR);
-    $stmt->bindValue(':location', $_POST['location'], PDO::PARAM_STR);
-    $stmt->bindValue(':date_established', $_POST['date_established'], PDO::PARAM_STR);
-    $stmt->bindValue(':area_in_acres', $_POST['area_in_acres'], PDO::PARAM_STR);
-    $stmt->bindValue(':description', $_POST['description'], PDO::PARAM_STR);
-    $stmt->execute();
-    
+    try {
+        $stmt->bindValue(':name', Input::escape(Input::getString('name')), PDO::PARAM_STR);
+    } catch(Exception $e) {
+        $errors['name'] = $e->getMessage();
+    }
+    try {
+        $stmt->bindValue(':location', Input::escape(Input::getString('location')), PDO::PARAM_STR);
+    } catch(Exception $e) {
+        $errors['location'] = $e->getMessage();
+    }
+    try {
+        $stmt->bindValue(':date_established', Input::escape(Input::getString('date_established')), PDO::PARAM_STR);
+    } catch(Exception $e) {
+        $errors['date_established'] = $e->getMessage();
+    }
+    try {
+        $stmt->bindValue(':area_in_acres', Input::escape(Input::getNumber('area_in_acres')), PDO::PARAM_STR);
+    } catch(Exception $e) {
+        $errors['area_in_acres'] = $e->getMessage();
+    }
+    try {
+        $stmt->bindValue(':description', Input::escape(Input::getString('description')), PDO::PARAM_STR);
+    } catch(Exception $e) {
+        $errors['description'] = $e->getMessage();
+    }
+    if (empty($errors)) {
+        $stmt->execute(); 
+    }
+    return $errors;
 }
-
-// Refactor using get() method
-(!empty($_POST['name']) && !empty($_POST['location']) && !empty($_POST['date_established']) && !empty($_POST['area_in_acres']) && !empty($_POST['description'])) ? insertInfo($dbc, $dateError, $areaError) : false; 
 
 function deleteRow($dbc)
 {
-    $row = $_POST['deleteRow'];
+    $row = Input::get('deleteRow');
     $queryDelete = 'SELECT * FROM national_parks WHERE id = $row;';
     $stmt = $dbc->prepare($queryDelete);
     $stmt->execute();
 }
 
-(!empty($_POST['deleteRow'])) ? deleteRow($dbc) : false;
+(Input::has('deleteRow')) ? deleteRow($dbc) : false;
 
 
 function pageController($dbc)
 {
     $data = [];
+    $data['errors'] = (Input::has('name') && Input::has('location') && Input::has('date_established') && Input::has('area_in_acres') && Input::has('description')) ? insertInfo($dbc) : [];
     $data['stmt'] = $dbc->query('SELECT * FROM national_parks');
-    $data['page'] = (isset($_GET['page'])) ? $_GET['page'] : 1;
+    $data['page'] = (Input::has('page')) ? Input::get('page') : 1;
     $data['limit'] = 4;
     $data['dateError'] = 'test';
     $data['areaError'] = 'test2';
-    $data['pageDisplay'] = (isset($_GET['page'])) ? $_GET['page'] : 1;
-    $data['new'] = (isset($_POST['page'])) ? $_POST['page'] : 1;
+    $data['pageDisplay'] = (Input::has('page')) ? Input::has('page') : 1;
+    $data['new'] = (Input::has('page')) ? Input::get('page') : 1;
     $data['parks'] = getInfo($dbc, $data['page'], $data['limit']);
     $data['query'] = '?page=';
     return $data;
@@ -115,6 +104,12 @@ extract(pageController($dbc));
     <!-- Bootstrap Core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Custom CSS -->
+    <style type="text/css">
+        .error {
+            color: red;
+        }
+
+    </style>
 
 </head>
 
@@ -167,18 +162,52 @@ extract(pageController($dbc));
             }
         ?>
         <h2>New Entries</h2>
+
+        <!-- STYLE WITH BOOSTRAP WARNINGS -->
         <h5>All fields must be filled out before submission.</h5>
         <form method="POST" action="/national_parks.php">
             <label id="name">Name</label><br>
-            <input type="text" name="name" id="name"><br>
+            <input type="text" name="name" id="name">
+            <?php 
+                if (array_key_exists('name', $errors)) {
+                    echo '<div class="error">' . $errors['area_in_acres'] . '</div>';
+                } 
+            ?>
+            <br>
             <label id="location">Location</label><br>
-            <input type="text" name="location" id="location"><br>
-            <label id="date_established">Date Established</label><br>
-            <input type="text" name="date_established" id="date_established"><br>
+            <input type="text" name="location" id="location">
+            <?php 
+                if (array_key_exists('location', $errors)) {
+                    echo '<div class="error">' . $errors['area_in_acres'] . '</div>';
+                } 
+            ?>
+            <br>
+            <label id="date_established">Date Established (YYYY-MM-DD)</label><br>
+            <input type="text" name="date_established" id="date_established">
+            <?php 
+                if (array_key_exists('date_established', $errors)) {
+                    echo '<div class="error">' . $errors['area_in_acres'] . '</div>';
+                } 
+            ?>
+            <br>
             <label id="area_in_acres">Area in Acres</label><br>
-            <input type="text" name="area_in_acres" id="area_in_acres"><br>
+            <input type="text" name="area_in_acres" id="area_in_acres">
+            <?php 
+                if (array_key_exists('area_in_acres', $errors)) {
+                    echo '<div class="error">' . $errors['area_in_acres'] . '</div>';
+                } 
+            ?>
+            <br>
             <label id="description">Description</label><br>
-            <input type="text" name="description" id="description"><br><br>
+            <textarea type="text" name="description" id="description"></textarea><br>
+            <?php 
+                if (array_key_exists('description', $errors)) {
+                    echo '<div class="error">' . $errors['description'] . '</div>';
+                } 
+            ?>
+            <br>
+
+
             <button type="submit" class="btn btn-success">Submit New Row</button>
         </form>
         <br>

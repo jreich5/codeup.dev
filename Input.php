@@ -36,6 +36,29 @@ class Input
         return htmlspecialchars(strip_tags($input));
     }
 
+    public static function getString($key)
+    {
+        if (!self::has($key)) {
+            throw new Exception("$key has no value.");
+        } else if (!is_string(self::get($key))) {
+            throw new Exception("$key was not entered as a string.");
+        } else {
+            return self::get($key);
+        }
+    }
+
+    public static function getNumber($key)
+    {
+        if (!self::has($key)) {
+            throw new Exception("$key has no value.");
+        } else if (!is_numeric(self::get($key))) {
+            throw new Exception("$key must be entered as a number.");
+        } else {
+            return self::get($key);
+        }
+    }
+
+
     ///////////////////////////////////////////////////////////////////////////
     //                      DO NOT EDIT ANYTHING BELOW!!                     //
     // The Input class should not ever be instantiated, so we prevent the    //
