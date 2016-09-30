@@ -27,34 +27,81 @@ function insertInfo($dbc)
     $queryInsert = 'INSERT INTO national_parks (name, location, date_established, area_in_acres, description) VALUES (:name, :location, :date_established, :area_in_acres, :description)';
 
     $stmt = $dbc->prepare($queryInsert);
+    $errors=[];
     try {
-        $stmt->bindValue(':name', Input::escape(Input::getString('name')), PDO::PARAM_STR);
-    } catch(Exception $e) {
+        $stmt->bindValue(':name', Input::escape(Input::getString('name', 0, 1000)), PDO::PARAM_STR);
+    } catch(InvalidArgumentException $e) {
+        $errors['name'] = 'Invalid arguments';
+    } catch(LengthException $e) {
+        $errors['name'] = 'Invalid input length.';
+    } catch(OutOfRangeException $e) {
+        $errors['name'] = 'Invalid value given.';
+    } catch(DomainException $e) {
+        $errors['name'] = 'Invalid input type.';
+    } catch (Exception $e) {
         $errors['name'] = $e->getMessage();
     }
+
     try {
-        $stmt->bindValue(':location', Input::escape(Input::getString('location')), PDO::PARAM_STR);
-    } catch(Exception $e) {
+        $stmt->bindValue(':location', Input::escape(Input::getString('location', 0, 1000)), PDO::PARAM_STR);
+    } catch(InvalidArgumentException $e) {
+        $errors['location'] = 'Invalid arguments';
+    } catch(LengthException $e) {
+        $errors['location'] = 'Invalid input length.';
+    } catch(OutOfRangeException $e) {
+        $errors['location'] = 'Invalid value given.';
+    } catch(DomainException $e) {
+        $errors['location'] = 'Invalid input type.';
+    } catch (Exception $e) {
         $errors['location'] = $e->getMessage();
     }
+
     try {
-        $stmt->bindValue(':date_established', Input::escape(Input::getString('date_established')), PDO::PARAM_STR);
-    } catch(Exception $e) {
+        $stmt->bindValue(':date_established', Input::escape(Input::getString('date_established', 0, 1000)), PDO::PARAM_STR);
+    } catch(InvalidArgumentException $e) {
+        $errors['date_established'] = 'Invalid arguments';
+    } catch(LengthException $e) {
+        $errors['date_established'] = 'Invalid input length.';
+    } catch(OutOfRangeException $e) {
+        $errors['date_established'] = 'Invalid value given.';
+    } catch(DomainException $e) {
+        $errors['date_established'] = 'Invalid input type.';
+    } catch (Exception $e) {
         $errors['date_established'] = $e->getMessage();
     }
+
     try {
-        $stmt->bindValue(':area_in_acres', Input::escape(Input::getNumber('area_in_acres')), PDO::PARAM_STR);
-    } catch(Exception $e) {
+        $stmt->bindValue(':area_in_acres', Input::escape(Input::getNumber('area_in_acres', 0, 10000)), PDO::PARAM_STR);
+    } catch(InvalidArgumentException $e) {
+        $errors['area_in_acres'] = 'Invalid arguments';
+    } catch(RangeException $e) {
+        $errors['area_in_acres'] = $e->getMessage();
+    } catch(OutOfRangeException $e) {
+        $errors['area_in_acres'] = 'Invalid value given.';
+    } catch(DomainException $e) {
+        $errors['area_in_acres'] = 'Invalid input type.';
+    } catch (Exception $e) {
         $errors['area_in_acres'] = $e->getMessage();
     }
+
     try {
-        $stmt->bindValue(':description', Input::escape(Input::getString('description')), PDO::PARAM_STR);
-    } catch(Exception $e) {
+        $stmt->bindValue(':description', Input::escape(Input::getString('description', 0, 1000)), PDO::PARAM_STR);
+    } catch(InvalidArgumentException $e) {
+        $errors['description'] = 'Invalid arguments';
+    } catch(LengthException $e) {
+        $errors['description'] = 'Invalid input length.';
+    } catch(OutOfRangeException $e) {
+        $errors['description'] = $e->getMessage();
+    } catch(DomainException $e) {
+        $errors['description'] = 'Invalid input type.';
+    } catch (Exception $e) {
         $errors['description'] = $e->getMessage();
     }
+
     if (empty($errors)) {
         $stmt->execute(); 
     }
+    var_dump($errors);
     return $errors;
 }
 
@@ -78,6 +125,11 @@ function pageController($dbc)
     $data['limit'] = 4;
     $data['dateError'] = 'test';
     $data['areaError'] = 'test2';
+    $data['name'] = (Input::has('name')) ? Input::get('name') : '';
+    $data['location'] = (Input::has('location')) ? Input::get('location') : '';
+    $data['date_established'] = (Input::has('date_established')) ? Input::get('date_established') : '';
+    $data['area_in_acres'] = (Input::has('area_in_acres')) ? Input::get('area_in_acres') : '';
+    $data['description'] = (Input::has('description')) ? Input::get('description') : '';
     $data['pageDisplay'] = (Input::has('page')) ? Input::has('page') : 1;
     $data['new'] = (Input::has('page')) ? Input::get('page') : 1;
     $data['parks'] = getInfo($dbc, $data['page'], $data['limit']);
@@ -108,7 +160,6 @@ extract(pageController($dbc));
         .error {
             color: red;
         }
-
     </style>
 
 </head>
@@ -167,46 +218,45 @@ extract(pageController($dbc));
         <h5>All fields must be filled out before submission.</h5>
         <form method="POST" action="/national_parks.php">
             <label id="name">Name</label><br>
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" id="name" value="<?= $name ?>">
             <?php 
                 if (array_key_exists('name', $errors)) {
-                    echo '<div class="error">' . $errors['area_in_acres'] . '</div>';
+                    echo '<span class="error">' . $errors['area_in_acres'] . '</span>';
                 } 
             ?>
             <br>
             <label id="location">Location</label><br>
-            <input type="text" name="location" id="location">
+            <input type="text" name="location" id="location" value="<?= $location ?>">
             <?php 
                 if (array_key_exists('location', $errors)) {
-                    echo '<div class="error">' . $errors['area_in_acres'] . '</div>';
+                    echo '<span class="error">' . $errors['area_in_acres'] . '</span>';
                 } 
             ?>
             <br>
             <label id="date_established">Date Established (YYYY-MM-DD)</label><br>
-            <input type="text" name="date_established" id="date_established">
+            <input type="text" name="date_established" id="date_established" value="<?= $date_established ?>">
             <?php 
                 if (array_key_exists('date_established', $errors)) {
-                    echo '<div class="error">' . $errors['area_in_acres'] . '</div>';
+                    echo '<span class="error">' . $errors['area_in_acres'] . '</span>';
                 } 
             ?>
             <br>
             <label id="area_in_acres">Area in Acres</label><br>
-            <input type="text" name="area_in_acres" id="area_in_acres">
+            <input type="text" name="area_in_acres" id="area_in_acres" value="<?= $area_in_acres ?>">
             <?php 
                 if (array_key_exists('area_in_acres', $errors)) {
-                    echo '<div class="error">' . $errors['area_in_acres'] . '</div>';
+                    echo '<span class="error">' . $errors['area_in_acres'] . '</span>';
                 } 
             ?>
             <br>
             <label id="description">Description</label><br>
-            <textarea type="text" name="description" id="description"></textarea><br>
+            <textarea type="text" name="description" id="description" value="<?= $description ?>"></textarea>
             <?php 
                 if (array_key_exists('description', $errors)) {
-                    echo '<div class="error">' . $errors['description'] . '</div>';
+                    echo '<span class="error">' . $errors['description'] . '</span>';
                 } 
             ?>
             <br>
-
 
             <button type="submit" class="btn btn-success">Submit New Row</button>
         </form>
